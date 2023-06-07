@@ -6,6 +6,11 @@ This project aims to detect and classify cyanobacteria blooms in small, inland w
 
 This project is based on the ML contest conducted by NASA. The contest focuses on utilizing satellite imagery data to detect and classify cyanobacteria blooms. By accurately identifying and classifying these blooms, the project aims to contribute to water quality management and environmental monitoring efforts.
 
+### NASA Earth Observatory
+![NASA Earth Observatory](https://www.nasa.gov/sites/default/files/thumbnails/image/algae_bloom_lake_erie.jpg)
+### Satellite data of chlorophyll-a concentration
+![Credit: NASA Earth Observatory](https://www.nasa.gov/sites/default/files/thumbnails/image/algae_bloom_lake_erie_chlorophyll.jpg)
+
 ### Contest Details
 
 - Contest Name: Tick Tick Bloom: Harmful Algal Bloom Detection Challenge
@@ -65,6 +70,15 @@ conda activate ticktickbloom
 2. Open the `main.ipynb` Jupyter Notebook.
 
 3. Follow the instructions in the notebook to preprocess the data, train models, and generate predictions.
+
+More Information about the contest
+1. <https://www.nasa.gov/feature/goddard/2021/downstream-consequences-how-nasa-tracks-harmful-algal-blooms/>
+2. <https://www.nasa.gov/tick-tick-bloom-challenge/>
+3. <https://www.nasa.gov/feature/early-detection-of-algae-blooms-by-satellite-yields-healthcare-savings/>
+
+Tick Tick Bloom: Harmful Algal Bloom Detection Challenge
+
+Early Detection of Algae ‘Blooms’ Yields Healthcare Savings
 
 ## License
 
