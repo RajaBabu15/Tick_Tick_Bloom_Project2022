@@ -51,17 +51,22 @@ To set up the project environment, follow these steps:
 
 2. Clone this repository:
 
-git clone <https://github.com/RajaBabu15/Tick_Tick_Bloom_Project2022>
-cd Tick_Tick_Bloom_Project2022
+```
+  git clone <https://github.com/RajaBabu15/Tick_Tick_Bloom_Project2022>
+  cd Tick_Tick_Bloom_Project2022
+```
 
 3. Create a new conda environment:
 
-conda env create -n ticktickbloom --file environment.yml
+```
+  conda env create -n ticktickbloom --file environment.yml
+```
 
 4. Activate the environment:
 
-conda activate ticktickbloom
-
+```
+  conda activate ticktickbloom
+```
 
 ## Running the Project
 
@@ -71,9 +76,12 @@ conda activate ticktickbloom
 
 3. Follow the instructions in the notebook to preprocess the data, train models, and generate predictions.
 
-More Information about the contest
+## More Information about the contest
+
 1. <https://www.nasa.gov/feature/goddard/2021/downstream-consequences-how-nasa-tracks-harmful-algal-blooms/>
+ 
 2. <https://www.nasa.gov/tick-tick-bloom-challenge/>
+
 3. <https://www.nasa.gov/feature/early-detection-of-algae-blooms-by-satellite-yields-healthcare-savings/>
 
 Tick Tick Bloom: Harmful Algal Bloom Detection Challenge
