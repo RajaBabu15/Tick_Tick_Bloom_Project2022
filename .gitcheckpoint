@@ -1,0 +1,251 @@
+Before Each Checkpoint
+$ git status
+$ git checkout -b checkpoint-23-interfaces
+Switched to a new branch 'checkpoint-23-interfaces'
+
+After Each Checkpoint
+$ git status
+$ git add .
+$ git status
+$ git commit -m "Checkpoint 23 completed, interfaces"
+$ git push origin checkpoint-23-interfaces
+$ git checkout master
+$ git merge checkpoint-23-interfaces
+$ git push
+
+Before Each Assignment
+$ git checkout -b assignment-23-interfaces
+
+After Each Assignment
+$ git add .
+$ git commit -m "Assignment 23 completed"
+$ git push origin assignment-23-interfaces
+$ git checkout master
+Submit the checkpoint assignment with a link to the assignment branch. The link will resemble https://github.com/username/bloc/tree/assignment-23-interfaces. To find the assignment branch's link, first navigate to your repository:
+
+
+
+
+
+
+Create a Repository
+
+Before a developer writes their first line of code, they create a repository. To do so, navigate to this GitHub page. The repository's name should reflect the name of the application, project, or endeavor it aims to achieve. For your Bloc course work, the project title used in the curriculum is preferred: “Blocitoff,” ”BlocSpot,” etc.
+
+Check the box to, “Initialize this repository with a README.” A .gitignore file helps developers exclude non-essential project files from their repositories. GitHub offers to initialize your repository with a ready-made .gitignore file. Click the “Add .gitignore: None” dropdown button, then select an option based on the type of project you're creating. Options suited for Bloc students include: Android, Objective-C, Swift, and Ruby.
+
+Leave it set to None if you're building a Frontend project. GitHub does not provide a .gitignore for Angular projects.
+Click the Create Repository button and wait for the process to succeed. Open your shell (Terminal/Git SCM) and navigate to a work or development directory:
+
+~
+$ cd development/
+Access the repository locally with a git clone command. Fill in username and repository-name with your GitHub username and the repository's name, respectfully:
+
+~/development/
+$ git clone git@github.com:{username}/{repository-name}.git
+Cloning into 'repository-name'...
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+Checking connectivity... done.
+Do not include the { or } characters.
+Recover the SSH clone address from the repository's main page. Read more about these addresses on GitHub.
+
+Before Each Checkpoint
+
+Checkpoints often build upon one another. However, their changes should remain isolated in the working repository. Before each checkpoint, perform a git status command:
+
+~/path/to/bloc-work
+$ git status
+Check for these four conditions:
+
+The repository is on the master branch.
+The repository has no staged changes.
+The repository has no un-staged changes.
+The repository reports zero untracked files.
+
+A clean master branch will output the following after executing the status command:
+
+~/path/to/bloc-work
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+nothing to commit (create/copy files and use "git add" to track)
+Refer to this table if any condition is not satisfied:
+
+Unmet Condition	Solution
+1	Checkout the master branch with the checkout command: git checkout master.
+2	If the repository has staged changes, they need to be committed. Perform a git commit and git push command before proceeding. If these files were staged by accident, un-stage them with a git reset HEAD command.
+3	Un-staged changes are modifications that have not been staged with git add. Use git diff to see which changes were made. If the changes are unnecessary, undo them with a git checkout . command. Otherwise, stage, commit and push them before proceeding.
+4	Are these files necessary? Why are they there? If they are not necessary, remove them with a git clean -f command.
+However, if these files are associated with an assignment or previous checkpoint, switch to the relevant branch then stage, commit, and push before continuing.
+Once the repository satisfies all four conditions, create and switch to a new branch. The name of the branch should reflect the name and/or number of the checkpoint:
+
+~/path/to/bloc-work
+$ git checkout -b checkpoint-23-interfaces
+Switched to a new branch 'checkpoint-23-interfaces'
+The repository is now ready for the modifications made in this checkpoint. Our pattern limits each commit to an atomic accomplishment. This is a best practice. Individual commits should not be responsible for too much, nor too little change. Changes made during a Bloc checkpoint represent the average amount of code modification found in a professional commit.
+
+
+After Each Checkpoint
+
+Checkpoints often modify or add new files to the repository. At the end of each one, stage, commit, and push these changes to their checkpoint branch:
+
+~/path/to/bloc-work
+$ git status
+On branch checkpoint-23-interfaces
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    NEW_FILE.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Add every un-staged change and untracked file with a git add . command:
+
+~/path/to/bloc-work
+$ git add .
+Double check the command succeeded with another git status command:
+
+~/path/to/bloc-work
+$ git status
+On branch checkpoint-23-interfaces
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    new file:   NEW_FILE.md
+    modified:   README.md
+Commit these changes with an appropriate commit message:
+
+~/path/to/bloc-work
+$ git commit -m "Checkpoint 23 completed, interfaces"
+[checkpoint-23-interfaces 766078b] Checkpoint 23 completed, interfaces
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 NEW_FILE.md
+Push the commit to its own remote branch (for easy reference):
+
+~/path/to/bloc-work
+$ git push origin checkpoint-23-interfaces
+Counting objects: 5, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 301 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:{username}/{repository-name}.git
+ * [new branch]      checkpoint-23-interfaces -> checkpoint-23-interfaces
+Check out the master branch and merge the changes from the checkpoint work:
+
+~/path/to/bloc-work
+$ git checkout master
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+nothing to commit, working directory clean
+$ git merge checkpoint-23-interfaces
+Updating f37cb87..c9f7148
+Fast-forward
+ NEW_FILE.md | 0
+ README.md   | 1 +
+ 2 files changed, 1 insertion(+)
+ create mode 100644 NEW_FILE.md
+Finally, update your remote master branch with one last push:
+
+~/path/to/bloc-work
+$ git push
+Total 0 (delta 0), reused 0 (delta 0)
+To git@github.com:{username}/{repository-name}.git
+   e3d3a8e..bc8fe87  master -> master
+This prepares the repository for assignment work.
+
+
+Before Each Assignment
+
+You must complete every assignment in its own branch. Assignment branches are based off of master, not the checkpoint they associate with. Therefore, the steps required here are identical to those before each checkpoint. Make sure that the repository meets all four conditions, then create and switch to a new branch for assignment work:
+
+~/path/to/bloc-work
+$ git checkout -b assignment-23-interfaces
+Switched to a new branch 'assignment-23-interfaces'
+Perform all assignment work on this branch.
+
+
+After Each Assignment
+
+This process resembles the one performed after each checkpoint. Stage every change with git add ., then provide a descriptive commit message. Push the assignment to its own remote branch and switch back to master:
+
+~/path/to/bloc-work
+$ git add .
+# …
+$ git commit -m "Assignment 23 completed"
+# …
+$ git push origin assignment-23-interfaces
+# …
+$ git checkout master
+…: Content omitted for brevity.
+Submit the checkpoint assignment with a link to the assignment branch. The link will resemble https://github.com/username/bloc/tree/assignment-23-interfaces. To find the assignment branch's link, first navigate to your repository:
+
+
+Click the # branches link, it leads to the following page:
+
+
+Find your assignment branch, copy its destination URL (or visit the link, then copy the address bar), submit it with your assignment and you are ready to move onto the next checkpoint.
+
+While we ask you to merge checkpoint changes back into the master branch, do not merge assignment branches.
+
+Why not? Assignments modify code written during checkpoint exercises. Later checkpoints often rely on that code to remain the same. Therefore, merging these changes into the master branch may hinder progress in later checkpoints, please avoid doing so unless explicitly instructed.
+
+Working on Checkpoints & Assignments Simultaneously
+
+We understand that some assignments result in nail biting, sleepless nights, and getting let go at work. To avoid these catastrophes, take a break from an assignment to work on the next checkpoint. Do so safely by first committing the partially implemented assignment:
+
+~/path/to/bloc-work
+$ git status
+On branch assignment-23-interfaces
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    THIS_ALMOST_WORKS.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+$ git add .
+# …
+$ git commit -m "Progress on assignment 23"
+# …
+$ git checkout master
+# …
+Then proceed with the steps required before each checkpoint.
+
+Let's say you are halfway through the next checkpoint when suddenly, inspiration hits you in the head like a metalhead in a SlipKnot mosh pit. You feel the burning sensation of invention and simply must continue the assignment which once stumped you. You do not have to complete the checkpoint before switching branches, but you must commit your work:
+
+~/path/to/bloc-work
+$ git status
+On branch checkpoint-24-buttons
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    BUTTONS.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+$ git add .
+# …
+$ git commit -m "Checkpoint 24 halfway done"
+# …
+$ git checkout assignment-23-interfaces
+Switched to branch 'assignment-23-interfaces'
+You can now pick up the assignment where you left off. If the sudden inspiration proves faulty, repeat the steps above and switch to the checkpoint branch to continue. If you complete the assignment, just follow the after assignment procedure.
+
+
+Tips & Tricks
+
+Command	Description
+git clean -f	This command permanently deletes all untracked files. These are files which have not been added using git add.
+git add .	This command stages every file and folder in the current directory for commit. The . may be replaced with specific file or directory names to add each individually.
+git checkout .	This command will undo any changes to un-staged files. The . may be replaced by a specific file name to undo individual file modifications, git checkout README.md
+git reset HEAD	This command is the antithesis to git add. This will un-stage changes and mark those files and folders as, "Changes not staged for commit."
+git diff	This command displays the changes made to every un-staged file. This command may be supplied with a file name, git diff README.md, to print the changes found exclusively within it.
+Students struggling with GitHub will find their support staff extraordinary. They provide lightning-fast, yet courteous responses.
